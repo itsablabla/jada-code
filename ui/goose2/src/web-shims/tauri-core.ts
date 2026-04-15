@@ -85,6 +85,7 @@ function ensureWs(): Promise<void> {
       ws = null;
       wsReady = null;
       initialized = false;
+      sessionMap.clear();
       // Reject any pending requests
       for (const [id, pending] of pendingRequests) {
         pending.reject(new Error("WebSocket closed"));

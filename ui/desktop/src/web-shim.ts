@@ -145,14 +145,10 @@ const electronShim = {
   openExternal: async (url: string) => { window.open(url, '_blank', 'noopener'); },
   openInChrome: (url: string) => { window.open(url, '_blank', 'noopener'); },
 
-  // Metadata fetch (proxy through goosed or direct)
-  fetchMetadata: async (url: string) => {
-    try {
-      const resp = await fetch(url, { mode: 'no-cors' });
-      return await resp.text();
-    } catch {
-      return '';
-    }
+  // Metadata fetch — not available in web (cross-origin restrictions prevent
+  // reading arbitrary page content from the browser). Returns empty string.
+  fetchMetadata: async (_url: string) => {
+    return '';
   },
 
   // Binary / Ollama / Mesh
