@@ -84,6 +84,7 @@ function ensureWs(): Promise<void> {
       console.warn("[acp] WebSocket closed:", ev.code, ev.reason);
       ws = null;
       wsReady = null;
+      initialized = false;
       // Reject any pending requests
       for (const [id, pending] of pendingRequests) {
         pending.reject(new Error("WebSocket closed"));
@@ -338,7 +339,7 @@ function handleNotification(msg: Record<string, unknown>): void {
           break;
         }
         default:
-          console.debug("[acp] Unknown notification type:", notifType, params);
+          console.debug("[acp] Unknown notification type:", updateType, params);
       }
       break;
     }
