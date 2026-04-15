@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Jada Code</title>
+    <script>
+      // Initialize theme before any content loads
+      (function () {
+        function initializeTheme() {
+          try {
+            if (window.localStorage) {
+              const useSystemTheme = localStorage.getItem('jada_setting_useSystemTheme');
+              const savedTheme = localStorage.getItem('jada_setting_theme');
+              const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+              const isSystem = useSystemTheme ? JSON.parse(useSystemTheme) : true;
+              const isDark = isSystem ? systemPrefersDark : (savedTheme ? JSON.parse(savedTheme) === 'dark' : systemPrefersDark);
+              
+              if (isDark) {
+                document.documentElement.classList.add('dark');
+                document.documentElement.style.colorScheme = 'dark';
+              } else {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.style.colorScheme = 'light';
+              }
+            }
+          } catch (error) {
+            console.warn('Failed to initialize theme:', error);
+          }
+        }
+        initializeTheme();
+      })();
+    </script>
+    <link href="./src/styles/main.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./src/web-entry.ts"></script>
+  </body>
+</html>
