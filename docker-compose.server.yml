@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  jada-code:
+    build: .
+    container_name: jada-code
+    command: server
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GOOSE_HOST=0.0.0.0
+      - GOOSE_PORT=3000
+      - GOOSE_PROVIDER=${GOOSE_PROVIDER:-openrouter}
+      - GOOSE_MODEL=${GOOSE_MODEL:-moonshotai/kimi-k2}
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - GOOSE_DISABLE_TELEMETRY=1
+    volumes:
+      - jada-code-data:/home/goose/.local/share/goose
+      - jada-code-config:/home/goose/.config/goose
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: "2"
+
+volumes:
+  jada-code-data:
+  jada-code-config:

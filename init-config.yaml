@@ -1,0 +1,4 @@
+# Jada Code — default configuration
+# Applied on first run if no config exists
+GOOSE_PROVIDER: openrouter
+GOOSE_MODEL: moonshotai/kimi-k2
