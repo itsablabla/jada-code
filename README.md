@@ -93,7 +93,7 @@ docker run -d \
   -e GOOSE_DISABLE_TELEMETRY=1 \
   -v jada-code-data:/home/goose/.local/share/goose \
   -v jada-code-config:/home/goose/.config/goose \
-  jada-code server
+  jada-code serve --host 0.0.0.0 --port 3000 --with-builtin developer,computercontroller,memory
 ```
 
 ## Upstream

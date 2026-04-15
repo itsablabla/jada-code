@@ -4,7 +4,7 @@ services:
   jada-code:
     build: .
     container_name: jada-code
-    command: server
+    command: serve --host 0.0.0.0 --port 3000 --with-builtin developer,computercontroller,memory
     restart: unless-stopped
     ports:
       - "3000:3000"
@@ -19,7 +19,7 @@ services:
       - jada-code-data:/home/goose/.local/share/goose
       - jada-code-config:/home/goose/.config/goose
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:3000/status"]
       interval: 30s
       timeout: 10s
       retries: 3
