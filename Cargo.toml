@@ -10,10 +10,10 @@ resolver = "2"
 [workspace.package]
 edition = "2021"
 version = "1.31.0"
-authors = ["AAIF <ai-oss-tools@block.xyz>"]
+authors = ["Garza OS <garzasecure@pm.me>", "AAIF <ai-oss-tools@block.xyz>"]
 license = "Apache-2.0"
-repository = "https://github.com/aaif-goose/goose"
-description = "An AI agent"
+repository = "https://github.com/itsablabla/jada-code"
+description = "Jada Code — AI coding agent powered by Goose"
 
 [workspace.lints.clippy]
 uninlined_format_args = "allow"

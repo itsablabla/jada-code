@@ -70,7 +70,7 @@ ENTRYPOINT ["/usr/local/bin/goose"]
 CMD ["--help"]
 
 # Labels for metadata
-LABEL org.opencontainers.image.title="goose"
-LABEL org.opencontainers.image.description="goose CLI"
-LABEL org.opencontainers.image.vendor="AAIF"
-LABEL org.opencontainers.image.source="https://github.com/aaif-goose/goose"
+LABEL org.opencontainers.image.title="jada-code"
+LABEL org.opencontainers.image.description="Jada Code — AI coding agent powered by Goose"
+LABEL org.opencontainers.image.vendor="Garza OS"
+LABEL org.opencontainers.image.source="https://github.com/itsablabla/jada-code"
